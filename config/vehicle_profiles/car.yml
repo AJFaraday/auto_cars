@@ -1,0 +1,5 @@
+name: basic car
+width: 2
+length: 3
+acceleration: 1
+image: 'car.png'
