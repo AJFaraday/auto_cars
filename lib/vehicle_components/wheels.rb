@@ -8,18 +8,19 @@ module VehicleComponents
     attr_accessor :wheel_angle, :turning_right, :turning_left
 
     def init_wheels
-      @wheel_angle = 0
+      @wheel_angle = 0.0
     end
 
     def turn_wheels
+      turn_speed = @profile.turn_speed.to_f
       if turning_right and wheel_angle_in_range?
-        @wheel_angle += @profile.turn_speed
+        @wheel_angle += turn_speed
       elsif turning_left and wheel_angle_in_range?
-        @wheel_angle -= @profile.turn_speed
+        @wheel_angle -= turn_speed
       elsif @wheel_angle > 0
-        @wheel_angle -= @profile.turn_speed
+        @wheel_angle -= turn_speed
       elsif @wheel_angle < 0
-        @wheel_angle += @profile.turn_speed
+        @wheel_angle += turn_speed
       end
     end
 

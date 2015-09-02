@@ -20,6 +20,7 @@ module VehicleComponents
       elsif @speed > @target_speed
         @speed -= acceleration
       end
+      puts @speed
     end
 
     def acceleration
