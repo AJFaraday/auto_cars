@@ -5,7 +5,7 @@ class Vehicle
   include VehicleComponents::Accelerate
   include VehicleComponents::Move
   include VehicleComponents::Wheels
-  #include VehicleComponents::Turn
+  include VehicleComponents::Turn
 
   attr_accessor :game, :wheels, :controller
   attr_accessor :x, :y, :angle
@@ -24,7 +24,7 @@ class Vehicle
     accelerate
     move
     turn_wheels
-    # turn
+    turn
   end
 
   def button_down(id)
