@@ -28,4 +28,11 @@ class VehicleProfile
     return @@profiles[profile_name.to_s]
   end
 
+  def method_missing(meth, *args, &block)
+    if @attrs and @attrs[meth.to_s]
+      return @attrs[meth.to_s]
+    end
+    super
+  end
+
 end
