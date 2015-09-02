@@ -4,14 +4,14 @@ module VehicleComponents
 
     # speed        - pixels per frame
     # target_speed -   "     "    "
-    # acceleration - pixels per frame per frame
+    # acceleration - decipixels per frame per frame
     #                (from profile)
 
     attr_accessor :speed, :target_speed
 
     def init_acceleration
-      @speed = 0
-      @target_speed = 0
+      @speed = 0.0
+      @target_speed = 0.0
     end
 
     def accelerate
@@ -23,7 +23,7 @@ module VehicleComponents
     end
 
     def acceleration
-      @profile.acceleration
+      @profile.acceleration.to_f / 10
     end
 
   end

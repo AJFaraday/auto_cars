@@ -7,6 +7,7 @@ Dir[File.join(File.dirname(__FILE__), '*.rb')].each { |file| require file }
 class Game < Gosu::Window
 
   include GameComponents::Initialisers
+  include GameComponents::Border
 
   attr_accessor :vehicles, :roads
 
@@ -24,6 +25,9 @@ class Game < Gosu::Window
   def button_down(id)
     vehicles.each do |ob|
       ob.button_down(id)
+    end
+    if id == Gosu::KbEscape
+      close
     end
   end
 

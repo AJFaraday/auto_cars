@@ -3,7 +3,7 @@ require 'yaml'
 class Vehicle
 
   include VehicleComponents::Accelerate
-  #include VehicleComponents::Move
+  include VehicleComponents::Move
   #include VehicleComponents::Wheels
   #include VehicleComponents::Turn
 
@@ -21,7 +21,7 @@ class Vehicle
 
   def update
     accelerate
-    # move
+    move
     # wheel_turn
     # turn
   end
