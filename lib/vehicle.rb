@@ -4,7 +4,7 @@ class Vehicle
 
   include VehicleComponents::Accelerate
   include VehicleComponents::Move
-  #include VehicleComponents::Wheels
+  include VehicleComponents::Wheels
   #include VehicleComponents::Turn
 
   attr_accessor :game, :wheels, :controller
@@ -17,12 +17,13 @@ class Vehicle
     @profile = VehicleProfile.fetch(profile)
     @controller = eval("VehicleControllers::#{@profile.controller}.new(self)")
     init_acceleration
+    init_wheels
   end
 
   def update
     accelerate
     move
-    # wheel_turn
+    turn_wheels
     # turn
   end
 
@@ -30,6 +31,10 @@ class Vehicle
     controller.button_down(id) if controller.respond_to?(:button_down)
   end
 
+  def button_up(id)
+    controller.button_up(id) if controller.respond_to?(:button_up)
+  end
+  
   def draw
     image.draw_rot(x, y, 1, angle)
   end

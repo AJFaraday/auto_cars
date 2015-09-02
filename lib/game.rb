@@ -1,6 +1,6 @@
 require 'gosu'
 
-Dir[File.join(File.dirname(__FILE__), '*','*.rb')].each { |file| require file }
+Dir[File.join(File.dirname(__FILE__), '*', '*.rb')].each { |file| require file }
 Dir[File.join(File.dirname(__FILE__), '*.rb')].each { |file| require file }
 
 
@@ -19,7 +19,7 @@ class Game < Gosu::Window
   end
 
   def update
-    vehicles.each{|v|v.update}
+    vehicles.each { |v| v.update }
   end
 
   def button_down(id)
@@ -31,9 +31,15 @@ class Game < Gosu::Window
     end
   end
 
+  def button_up(id)
+    vehicles.each do |ob|
+      ob.button_up(id)
+    end
+  end
+
   def draw
-    roads.each{|v|v.draw}
-    vehicles.each{|v|v.draw}
+    roads.each { |v| v.draw }
+    vehicles.each { |v| v.draw }
   end
 
 end
