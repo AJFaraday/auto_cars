@@ -17,15 +17,21 @@ module VehicleComponents
     def accelerate
       if @braking and @speed > 0
         @speed -= (@speed < braking_speed ? @speed : braking_speed)
-      elsif @speed < @target_speed
+      elsif @accelerating and @speed < @target_speed
         @speed += acceleration
-      elsif @speed > @target_speed
-        @speed -= acceleration
+      elsif @accelerating and @speed > @target_speed
+        @speed -= slowing_speed
+      elsif @speed >= 0
+        @speed -= (@speed < slowing_speed ? @speed : slowing_speed)
       end
     end
 
     def acceleration
       @profile.acceleration.to_f / 10
+    end
+
+    def slowing_speed
+      @profile.acceleration.to_f / 5
     end
 
   end

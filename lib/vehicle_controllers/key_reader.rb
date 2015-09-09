@@ -12,7 +12,8 @@ module VehicleControllers
     TURN_KEYS = {
       Gosu::KbLeft => :@turning_left,
       Gosu::KbRight => :@turning_right,
-      Gosu::KbDown => :@braking
+      Gosu::KbDown => :@braking,
+      Gosu::KbUp => :@accelerating
     }
 
     TARGET_INTERVAL = 10
