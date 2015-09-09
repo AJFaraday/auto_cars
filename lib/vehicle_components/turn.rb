@@ -9,7 +9,7 @@ module VehicleComponents
 
     def turn
       if @speed > 0.1
-        turn_angle = wheel_angle.to_f * (1 / (speed.to_f))
+        turn_angle = (wheel_angle.to_f * speed.to_f) / 360
         @angle += turn_angle
       end
     end
