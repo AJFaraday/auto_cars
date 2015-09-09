@@ -2,7 +2,7 @@ module GameComponents
   
   module Border
 
-    BORDER_SIZE = 50
+    BORDER_SIZE = 20
 
     def border_left
       0 - BORDER_SIZE
