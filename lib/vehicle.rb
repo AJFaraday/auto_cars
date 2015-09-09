@@ -28,6 +28,8 @@ class Vehicle
     move
     turn_wheels
     turn
+
+    @display.update if @display
   end
 
   def button_down(id)

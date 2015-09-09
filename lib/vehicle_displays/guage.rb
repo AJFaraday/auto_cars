@@ -10,18 +10,27 @@ module VehicleDisplays
       )
     )
 
-    attr_accessor :x, :y, :needles
+    attr_accessor :x, :y, :needles, :vehicle
 
-    def initialize(x, y)
+    def initialize(vehicle, x, y)
+      @vehicle = vehicle
       @x = x
       @y = y
+      @needles = [
+        VehicleDisplays::Needle.new(self, 'speed', 'red'),
+        VehicleDisplays::Needle.new(self, 'target_speed', 'green')
+      ]
     end
 
     def draw
+      @needles.each { |needle| needle.draw }
       VehicleDisplays::Guage::GUAGE_IMAGE.draw(
         @x, @y, Layer[:display]
       )
-      @needles.each{|name, needle|needle.draw}
+    end
+
+    def update
+      @needles.each { |needle| needle.update }
     end
 
   end
