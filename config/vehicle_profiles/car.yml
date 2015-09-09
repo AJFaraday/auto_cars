@@ -6,3 +6,4 @@ turn_speed: 5
 braking_speed: 1
 image: 'car.png'
 controller: KeyReader
+display_class: Dashboard

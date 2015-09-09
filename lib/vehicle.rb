@@ -16,6 +16,9 @@ class Vehicle
     @x, @y, @angle = x, y, angle
     @profile = VehicleProfile.fetch(profile)
     @controller = eval("VehicleControllers::#{@profile.controller}.new(self)")
+    if @profile.display_class
+      @display = eval("VehicleDisplays::#{@profile.display_class}.new(self)")
+    end
     init_acceleration
     init_wheels
   end
@@ -36,7 +39,8 @@ class Vehicle
   end
   
   def draw
-    image.draw_rot(x, y, 1, angle)
+    image.draw_rot(x, y, Layer[:vehicle], angle)
+    @display.draw if @display
   end
 
   def image

@@ -5,7 +5,7 @@ module VehicleComponents
     MAX_WHEEL_ANGLE = 45
     MIN_WHEEL_ANGLE = -45
 
-    attr_accessor :wheel_angle, :turning_right, :turning_left
+    attr_accessor :wheel_angle
 
     def init_wheels
       @wheel_angle = 0.0
@@ -13,9 +13,9 @@ module VehicleComponents
 
     def turn_wheels
       turn_speed = @profile.turn_speed.to_f
-      if turning_right and wheel_angle_in_range?
+      if @turning_right and wheel_angle_in_range?
         @wheel_angle += turn_speed
-      elsif turning_left and wheel_angle_in_range?
+      elsif @turning_left and wheel_angle_in_range?
         @wheel_angle -= turn_speed
       elsif @wheel_angle > 0
         @wheel_angle -= turn_speed

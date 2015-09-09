@@ -11,8 +11,8 @@ class Game < Gosu::Window
 
   attr_accessor :vehicles, :roads
 
-  def initialize
-    super 683, 384, {}
+  def initialize(width=683, height=384)
+    super width, height, {}
     self.caption = "AutoCars"
     self.vehicles = []
     self.roads = []
