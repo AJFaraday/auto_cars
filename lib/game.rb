@@ -42,4 +42,9 @@ class Game < Gosu::Window
     vehicles.each { |v| v.draw }
   end
 
+  def show
+    connect_roads
+    super
+  end
+
 end

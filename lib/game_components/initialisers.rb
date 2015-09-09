@@ -7,7 +7,13 @@ module GameComponents
     end
 
     def add_road(x1, y1, x2, y2)
-      roads << Road.new(x1, y1, x2, y2)
+      roads << Road.new(self, x1, y1, x2, y2)
+    end
+
+    def connect_roads
+      roads.each do |road|
+        road.connect_to_neighbours
+      end
     end
 
   end

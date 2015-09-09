@@ -1,14 +1,16 @@
 class Road
 
   include RoadComponents::Corners
+  include RoadComponents::Connection
 
   COLOUR = Gosu::Color::GRAY
   WIDTH = 40
 
   attr_accessor :x1, :y1, :X2, :y2
-  attr_accessor :quads
+  attr_accessor :game, :quads
 
-  def initialize(x1=100, y1=100, x2=100, y2=300)
+  def initialize(game, x1=100, y1=100, x2=100, y2=300)
+    @game = game
     @x1, @y1, @x2, @y2 = x1, y1, x2, y2
     @angle = Gosu.angle(@x1, @y1, @x2, @y2)
     @quads = []
@@ -35,5 +37,6 @@ class Road
       Layer[:road_paint]
     )
   end
+
 
 end
