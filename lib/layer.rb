@@ -2,6 +2,7 @@ module Layer
 
   LAYERS = [
     :road,
+    :road_paint,
     :vehicle,
     :display
   ]
