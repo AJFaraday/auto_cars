@@ -7,7 +7,7 @@ class Vehicle
   include VehicleComponents::Wheels
   include VehicleComponents::Turn
 
-  attr_accessor :game, :wheels, :controller
+  attr_accessor :game, :controller
   attr_accessor :x, :y, :angle
 
   def initialize(game, x, y, angle, profile)
@@ -41,6 +41,13 @@ class Vehicle
 
   def image
     @profile.image
+  end
+
+  def method_missing(meth, *args, &block)
+    if @profile and @profile.attrs and @profile.attrs[meth.to_s]
+      return @profile.attrs[meth.to_s]
+    end
+    super
   end
 
 end

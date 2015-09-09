@@ -7,7 +7,7 @@ module VehicleComponents
     # acceleration - decipixels per frame per frame
     #                (from profile)
 
-    attr_accessor :speed, :target_speed
+    attr_accessor :speed, :target_speed, :braking
 
     def init_acceleration
       @speed = 0.0
@@ -15,12 +15,13 @@ module VehicleComponents
     end
 
     def accelerate
-      if @speed < @target_speed
+      if @braking and @speed > 0
+        @speed -= (@speed < braking_speed ? @speed : braking_speed)
+      elsif @speed < @target_speed
         @speed += acceleration
       elsif @speed > @target_speed
         @speed -= acceleration
       end
-      puts @speed
     end
 
     def acceleration

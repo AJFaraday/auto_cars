@@ -2,6 +2,7 @@ name: basic car
 width: 2
 length: 3
 acceleration: 1
-turn_speed: 1
+turn_speed: 5
+braking_speed: 1
 image: 'car.png'
 controller: KeyReader
