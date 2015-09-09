@@ -1,7 +1,8 @@
  class Road
 
-  COLOUR = Gosu::Color::GRAY
+  include RoadComponents::Corners
 
+  COLOUR = Gosu::Color::GRAY
   WIDTH = 40
 
   attr_accessor :x1, :y1, :X2, :Y2
@@ -27,38 +28,6 @@
       @x2, @y2, Gosu::Color::WHITE,
       Layer[:road_paint]
     )
-  end
-
-  def front_right
-    return @front_right if @front_right
-    @front_right = []
-    @front_right << (Math.cos(@angle.degrees)  * WIDTH) + @x1
-    @front_right << (Math.sin(@angle.degrees) * WIDTH) + @y1
-    @front_right
-  end
-
-  def front_left
-    return @front_left if @front_left
-    @front_left = []
-    @front_left << (Math.cos(@angle.degrees) * (WIDTH * -1)) + @x1
-    @front_left << (Math.sin(@angle.degrees) * (WIDTH * -1)) + @y1
-    @front_left
-  end
-
-  def back_right
-    return @back_right if @back_right
-    @back_right = []
-    @back_right << (Math.cos(@angle.degrees)  * WIDTH) + @x2
-    @back_right << (Math.sin(@angle.degrees) * WIDTH) + @y2
-    @back_right
-  end
-
-  def back_left
-    return @back_left if @back_left
-    @back_left = []
-    @back_left << (Math.cos(@angle.degrees) * (WIDTH * -1)) + @x2
-    @back_left << (Math.sin(@angle.degrees) * (WIDTH * -1)) + @y2
-    @back_left
   end
   
 end
