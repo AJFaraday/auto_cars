@@ -43,6 +43,18 @@ module RoadComponents
       ]
     end
 
+    def front
+      [@x1, @y1]
+    end
+
+    def back
+      [@x2, @y2]
+    end
+
+    def ends
+      [front, back]
+    end
+
   end
 
 end

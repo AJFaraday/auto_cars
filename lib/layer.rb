@@ -4,7 +4,8 @@ module Layer
     :road,
     :road_paint,
     :vehicle,
-    :display
+    :display,
+    :debug
   ]
 
   def self.[](name)

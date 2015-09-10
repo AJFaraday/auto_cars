@@ -2,8 +2,8 @@ module VehicleComponents
 
   module Wheels
 
-    MAX_WHEEL_ANGLE = 45
-    MIN_WHEEL_ANGLE = -45
+    MAX_WHEEL_ANGLE = 90
+    MIN_WHEEL_ANGLE = -90
 
     attr_accessor :wheel_angle
 

@@ -9,13 +9,15 @@ class Game < Gosu::Window
   include GameComponents::Initialisers
   include GameComponents::Border
 
-  attr_accessor :vehicles, :roads
+  attr_accessor :vehicles, :roads, :junctions
+  attr_accessor :debug_junctions
 
   def initialize(width=683, height=384)
     super width, height, {}
     self.caption = "AutoCars"
     self.vehicles = []
     self.roads = []
+    self.junctions = []
   end
 
   def update
@@ -40,6 +42,7 @@ class Game < Gosu::Window
   def draw
     roads.each { |v| v.draw }
     vehicles.each { |v| v.draw }
+    junctions.each { |v| v.draw } if @debug_junctions
   end
 
   def show

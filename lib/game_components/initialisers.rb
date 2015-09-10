@@ -16,6 +16,10 @@ module GameComponents
       end
     end
 
+    def add_junction(x,y)
+      junctions << Junction.new(self, x, y)
+    end
+
   end
 
 end

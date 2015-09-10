@@ -4,17 +4,17 @@ module RoadComponents
 
     def connect_to_neighbours
       neighbours = get_neighbours
-      puts neighbours.count
       neighbours.each do |neighbour|
         links = get_links_for(neighbour)
         links.each_slice(2) do |links|
-          puts links.inspect
-          self.quads << [
+          quad = [
             [links[0][:x1], links[0][:y1]],
             [links[0][:x2], links[0][:y2]],
             [links[1][:x1], links[1][:y1]],
             [links[1][:x2], links[1][:y2]]
           ]
+          self.quads << quad
+          build_junction(quad)
         end
       end
     end
@@ -48,7 +48,7 @@ module RoadComponents
               corner[0], corner[1],
               other_corner[0], other_corner[1]
             )
-            dist <= (Road::WIDTH + 20)
+            dist <= (Road::WIDTH * 2)
           end
         end
       end
@@ -57,6 +57,12 @@ module RoadComponents
 
     def other_roads
       game.roads.reject { |x| x == self }
+    end
+
+    def build_junction(quad)
+      xs = quad.collect{|coord| coord[0]}
+      ys = quad.collect{|coord| coord[1]}
+      game.add_junction(xs.mean,ys.mean)
     end
 
   end
